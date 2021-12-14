@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://kit.fontawesome.com/892f98a91b.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="style.css">
+  <title>Les petits plats</title>
+</head>
+<body>
+  <header>
+    <img id='logo' src="./icone.png" alt="icone les petits plats">
+  </header>
+  <main>
+    <div id="search_bar_div">
+      <input id="search_bar" type="text" placeholder="Rechercher un ingrédient, appareil, ustensiles ou une recette"></input>
+      <i class="fas fa-times" id="erase_search_bar"></i>
+      <i class="fas fa-search" aria-hidden="true"></i>
+    </div>
+    <div id="tags"></div>
+    <div id="menus"><!--Les trois menus colorés-->
+      <div class="search_menu" id="ingredients">
+        <i class="fas fa-chevron-up closed" aria-hidden="true"></i>
+        <div class="search_menu_title">Ingrédients</div>
+        <i class="fas fa-times erase"></i>
+        <input id="search_bar_ingredients" class="search_menu_input" type="text" placeholder="Rechercher un ingrédient"></input>
+        <div class="list" id="ingredients_list"></div>
+      </div>
+      <div class="search_menu" id="appliance">
+        <i class="fas fa-chevron-up closed" aria-hidden="true"></i>
+        <div class="search_menu_title">Appareil</div>
+        <i class="fas fa-times erase"></i>
+        <input id="search_bar_appliance" class="search_menu_input" type="text" placeholder="Rechercher un appareil"></input>
+        <div class="list" id="appliance_list"></div>
+      </div>
+      <div class="search_menu" id="ustensils">
+        <i class="fas fa-chevron-up closed" aria-hidden="true"></i>
+        <div class="search_menu_title">Ustensiles</div>
+        <i class="fas fa-times erase"></i>
+        <input id="search_bar_ustensils" class="search_menu_input" type="text" placeholder="Rechercher un ustensile"></input>
+        <div class="list" id="ustensils_list"></div>
+      </div>
+    </div>
+    <!-- là où seront les fiches recettes-->
+    <div id="recipies_container"></div>
+    <!-- modale recette choisie-->
+    <div id="chosen_recipe" class="hidden">
+      <i id="close_button" class="fas fa-times"></i>
+      <div class="recipe_content"></div>
+    </div>
+  </main>
+  <script src="https://kit.fontawesome.com/892f98a91b.js" crossorigin="anonymous"></script>
+  <script src="recipies.js"></script>
+  <script src="class.js"></script>
+  <script src="functions.js"></script>
+  <script src="recipe_DOM_factory.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
