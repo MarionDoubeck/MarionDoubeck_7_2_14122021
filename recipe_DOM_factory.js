@@ -1,8 +1,8 @@
 function recipe_factory(recipe,recipeCardHtml){
-  const {name,ingredients,time}=recipe;
+  const {id,name,ingredients,description,time}=recipe;
   function getRecipeCardDOM(){
     recipeCardHtml+=`
-    <a href=# onclick='open_modal( "${name}" )' class="a_recipe">
+     <div class="a_recipe" id=recipe_${id}>
       <div class="recipe_pic"></div>
       <div class="recipe_top">
         <span class="recipe_name">${name}</span>
@@ -25,9 +25,9 @@ function recipe_factory(recipe,recipeCardHtml){
 
     recipeCardHtml+=`
           </div>
-        <div class="recipe_description">${recipe.description}</div>
+        <div class="recipe_description">${description}</div>
       </div>
-    </a>
+    </div>
     `
     return recipeCardHtml;
   }

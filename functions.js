@@ -2,7 +2,6 @@ function init_list_of_tags(list_of_recipies){
   console.log('dans init_list_of_tags');
   let list_of_tags=[];
   let tag=new Tag;
-  let len=0;
   for (const recipe of list_of_recipies){
     for(let i=0;i<recipe.ingredients.length;i++){
       tag=new Tag(recipe['ingredients'][i]['ingredient'].toLowerCase(),'ingredients');
@@ -51,6 +50,7 @@ function filter_recipies(recipies){
   let addIt=0;
   for (let recipe of recipies){
     for(let tag of list_of_displayed_tags){
+      tag.name=tag.name.toLowerCase();
       if(tag.type=='appliance'){
         item=recipe[tag.type].toLowerCase();
         if (item==tag.name){
@@ -208,7 +208,7 @@ function display_recipies(sorted_recipies_list,recipies){
   }else{
     let recipeCardHtml="";
     for(const recipe of sorted_recipies_list){ 
-      const recipeModel=recipe_factory(recipe,recipeCardHtml);
+      const recipeModel=recipe_factory(recipe,recipeCardHtml,recipies);
       recipeCardHtml=recipeModel.getRecipeCardDOM();
     }
     recipiesContainer.innerHTML=recipeCardHtml;
@@ -238,7 +238,7 @@ function display_clickable_advanced_field(type,list_of_the_field,recipies){
     if(dont==0){
       let newItem=document.createElement("div");
     newItem.className="tags_in_menu";
-    newItem.textContent=tag.name;
+    newItem.textContent=capitalizeFirstLetter(tag.name);
     document.getElementById(type+'_list').appendChild(newItem); 
     newItem.addEventListener('click',()=>display_tags(list_of_the_field[i],recipies));  
     }
@@ -257,7 +257,7 @@ function display_tags(newTag,recipies){
   list_of_displayed_tags=[... new Set(list_of_displayed_tags)];
   tagCardHtml='';
   for (let i=0; i<list_of_displayed_tags.length;i++){
-    tagCardHtml+=`<span class="aTag ${list_of_displayed_tags[i].type}">${list_of_displayed_tags[i].name}<i class="fas fa-times close_tag"></i></span>`
+    tagCardHtml+=`<span class="aTag ${list_of_displayed_tags[i].type}">${capitalizeFirstLetter(list_of_displayed_tags[i].name)}<i class="fas fa-times close_tag"></i></span>`
   }
   document.getElementById('tags').innerHTML=tagCardHtml;
   document.querySelectorAll('.close_tag').forEach(element => {
@@ -281,10 +281,56 @@ function erase_search_bar(){
   document.getElementById("search_bar").value="";
 }
 ////////////////////////////////////////////////////////////////////////////////////
-function open_modal(name){
+function open_modal(e,recipies){
+  let recipe_id=0;
+  if(e.target.parentNode.id.split("_")[1]==undefined){
+    if(e.target.parentNode.parentNode.id.split("_")[1]==undefined){
+      if(e.target.className=="a_recipe"){
+        recipe_id=e.target.id.split("_")[1];
+      }else{
+        recipe_id=e.target.parentNode.parentNode.parentNode.id.split("_")[1];
+      }
+    }else{
+      recipe_id=e.target.parentNode.parentNode.id.split("_")[1];
+    }
+  }else{
+    recipe_id=e.target.parentNode.id.split("_")[1];
+  }
+  console.log(recipies);
   document.getElementById('chosen_recipe').classList.remove("hidden");
-  document.querySelector('.recipe_content').innerHTML=name;
+  if(recipe_id!=0){
+    let recipe={};
+    for(element of recipies){
+      if (element.id==recipe_id){
+        recipe=element;
+        break
+      }
+    }
+    let list_of_ingredients=[];
+    for (item of recipe.ingredients){
+      list_of_ingredients.push('</br>'+item.ingredient);
+    }
+    console.log('ici');
+    document.querySelector('.recipe_content').innerHTML=`
+    <div id="recipe_info">
+      <img id='cooking' src="./cooking.jpg">
+      <div>Pour ${recipe.servings} personne(s)<br></div>
+      <div>Temps de préparation : ${recipe.time} minutes<br></div>
+      <div>Ingredients : ${list_of_ingredients}<br></div>
+      <div>Appareil : ${recipe.appliance}<br></div>
+      <div>Ustensiles : ${recipe.ustensils}<br></div>
+    </div>
+    <div id="modal_right">
+      <div id="modal_name">${recipe.name}</div>
+      <div id="modal_description">${recipe.description}</div>
+    </div>
+    `;
+  }
   document.getElementById('close_button').addEventListener("click",()=>{
     document.getElementById('chosen_recipe').classList.add("hidden");
   })
+}
+////////////////////////////////////////////////////////////////////////////////////
+function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
 }

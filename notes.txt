@@ -1,6 +1,3 @@
-Ne pas ajouter les tags dejà présents dans les listes des menus cliquables;
-Mettre des maj à l'affichage des tags
-//////////////////
 La methode par fonctions array
 /////////////////
 Les tests de rapidité

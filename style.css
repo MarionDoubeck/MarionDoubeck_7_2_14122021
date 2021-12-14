@@ -288,25 +288,52 @@ select:focus{
   display: none !important;
 }
 #chosen_recipe{
-  position: absolute;
+  position: fixed;
   width: 90vw;
   height: 80vh;
   background-color: burlywood;
   top:5vh;
   left:5vw;
   border: solid 2px black;
-  z-index: 10;
+  z-index: 1000000;
+  overflow: scroll;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
 
 #close_button{
-  padding: 20px;
   font-size: 2rem;
   font-weight: bold;
-  background-color: rgb(160, 95, 95);
-  border: solid 2px blue;
   cursor: pointer;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+#cooking{
+  width: 100%;
+}
+.recipe_content{
+  display: flex;
+  padding: 20px;
+}
+
+#recipe_info{
+  width: 30%;
+  padding: 0 20px;
+  margin: 0;
+}
+#recipe_info div{
+  margin: 20px 0;
+}
+#modal_right{
+  width: 70%;
+  padding: 20px;
+}
+#modal_name{
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+#modal_description{
+  line-height: 2rem;
 }
