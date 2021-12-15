@@ -4,3 +4,6 @@ Les tests de rapidité
 Les tests sur firefox, W3machin
 Demander la validation
 Faire le power point
+////////////////
+virer les console.log
+vérifier les commentaires

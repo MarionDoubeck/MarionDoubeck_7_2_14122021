@@ -51,9 +51,5 @@ erasers.forEach(eraser=>{
   eraser.addEventListener('click',(e)=>erase(e));
 })
 
-document.getElementById('erase_search_bar').addEventListener('click',()=>erase_search_bar());
+document.getElementById('erase_search_bar').addEventListener('click',()=>erase_search_bar(recipies));
 
-////////////////////////////////////////////////////
-document.querySelectorAll('.a_recipe').forEach(element => {
-  element.addEventListener('click',(e)=>open_modal(e,recipies))
-});

@@ -291,15 +291,17 @@ select:focus{
   position: fixed;
   width: 90vw;
   height: 80vh;
-  background-color: burlywood;
   top:5vh;
   left:5vw;
-  border: solid 2px black;
+  border: solid 2px rgb(255, 109, 11);
   z-index: 1000000;
   overflow: scroll;
   display: flex;
   flex-direction: column;
+  background: url("./cooking.jpg") center center no-repeat;
+  background-size: cover;
 }
+
 
 #close_button{
   font-size: 2rem;
@@ -308,6 +310,7 @@ select:focus{
   position: absolute;
   top: 20px;
   right: 20px;
+  color: rgb(255, 109, 11);
 }
 
 #cooking{
@@ -319,20 +322,21 @@ select:focus{
 }
 
 #recipe_info{
-  width: 30%;
-  padding: 0 20px;
+  width: 20%;
+  padding-left: 20px;
   margin: 0;
 }
 #recipe_info div{
   margin: 20px 0;
 }
 #modal_right{
-  width: 70%;
-  padding: 20px;
+  width: 80%;
+  padding: 20px 60px 20px 20px;
 }
 #modal_name{
   font-size: 3rem;
-  margin-bottom: 20px;
+  margin-bottom: 50px;
+  color: rgb(255, 109, 11);
 }
 #modal_description{
   line-height: 2rem;
