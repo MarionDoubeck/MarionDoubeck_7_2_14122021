@@ -44,10 +44,23 @@ function filter_recipies(recipies){
 function filter_advanced_search_fields(sorted_recipies_list,recipies){
   console.log('dans filter_advanced_search_fields');
   //trier les menus avancés en ne gardant que ce qu'il y a dans la liste de recettes :
-  list_of_advanced_tags=init_list_of_tags(sorted_recipies_list);
-  const ingredients=list_of_advanced_tags.filter(tag=>tag.type="ingredients");
-  const appliance=list_of_advanced_tags.filter(tag=>tag.type="appliance");
-  const ustensils=list_of_advanced_tags.filter(tag=>tag.type="ustensils");
+  let list_of_advanced_tags=init_list_of_tags(sorted_recipies_list);
+  let ingredients=[];
+  let appliance=[];
+  let ustensils=[];
+  for(tag of list_of_advanced_tags){
+    switch(tag.type){
+      case 'ingredients':
+        ingredients.push(tag);
+        break
+      case 'appliance' :
+        appliance.push(tag);
+        break
+      case 'ustensils' :
+        ustensils.push(tag);
+        break
+    }
+  }
   display_clickable_advanced_field('ingredients',ingredients,recipies);
   display_clickable_advanced_field('appliance',appliance,recipies);
   display_clickable_advanced_field('ustensils',ustensils,recipies);
