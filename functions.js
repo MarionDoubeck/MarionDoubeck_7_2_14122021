@@ -11,7 +11,7 @@ function init_list_of_tags(list_of_recipies){
     }
   }
   list_of_tags=remove_duplicates_in_array_of_tags(list_of_tags);
-  return list_of_tags
+  return list_of_tags;
 }
 ////////////////////////////////////////////////////////////////////////////////////
 function filter_recipies(recipies){
@@ -27,16 +27,16 @@ function filter_recipies(recipies){
   //filter recipies by displayed tags :
   if(list_of_displayed_tags.length>0){
     newList=recipies.filter(recipe=>{
-      return list_of_displayed_tags.some(tag=>recipe_has_tag(recipe,tag))
-    })
+      return list_of_displayed_tags.some(tag=>recipe_has_tag(recipe,tag));
+    });
   }
   //filter par la barre de recherche
   const research=document.getElementById('search_bar').value;
   if (research.length==0){
     display_recipies(newList,recipies);
-  return
+  return;
   }else{
-    newList2=newList.filter(recipe=>is_string_in_recipe(research,recipe))
+    newList2=newList.filter(recipe=>is_string_in_recipe(research,recipe));
     display_recipies(newList2,recipies);
   }
 }

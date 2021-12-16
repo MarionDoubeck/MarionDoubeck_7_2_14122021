@@ -1,5 +1,5 @@
 function tag1_equals_tag2(tag1,tag2){
-  return (tag1.type.toLowerCase()==tag2.type.toLowerCase() && tag1.name.toLowerCase()==tag2.name.toLowerCase())
+  return (tag1.type.toLowerCase()==tag2.type.toLowerCase() && tag1.name.toLowerCase()==tag2.name.toLowerCase());
 }
 ////////////////////////////////////////////////////////////////////////////////////
 function remove_duplicates_in_array_of_tags(arr){
@@ -8,23 +8,23 @@ function remove_duplicates_in_array_of_tags(arr){
   let newArr=arr.filter(tag=>{
     const duplicate =seen.has(tag.name+tag.type);
     seen.add(tag.name+tag.type);
-    return !duplicate
+    return !duplicate;
   })
-  return newArr
+  return newArr;
 }
 ////////////////////////////////////////////////////////////////////////////////////
 function array1_not_in_array2(arr1,arr2){
   result=arr1.filter(el1=>{
     if(!arr2.some(el2=>tag1_equals_tag2(el2,el1))){
-      return el1
+      return el1;
     }
   })
-  return result
+  return result;
 }
 ////////////////////////////////////////////////////////////////////////////////////
 function string_in_arrayOfTags(type,str,arr){
   result=arr.filter(el=>el.name.toLowerCase().includes(str.toLowerCase())&&el.type==type)
-  return result
+  return result;
 }
 ////////////////////////////////////////////////////////////////////////////////////
 function is_string_in_recipe(str,recipe){
@@ -34,13 +34,13 @@ function is_string_in_recipe(str,recipe){
   }else if(recipe.description.toLowerCase().includes(str.toLowerCase())){
     result=true;
   }else{
-    for (item of recipe.ingredients){
+    for (const item of recipe.ingredients){
       if(item.ingredient.toLowerCase().includes(str.toLowerCase())){
         result=true;
       }
     }
   }
-  return result
+  return result;
 }
 ////////////////////////////////////////////////////////////////////////////////////
 function recipe_has_tag(recipe,tag){
@@ -52,19 +52,19 @@ function recipe_has_tag(recipe,tag){
           result=true;
         }
       }
-      break 
+      break ;
     case 'appliance':
       if(recipe.appliance.toLowerCase()==tag.name.toLowerCase()){
         result=true;
       }
-      break
+      break;
     case 'ustensils':
       for(const ustensil of recipe.ustensils){
         if(ustensil.toLowerCase()==tag.name.toLowerCase()){
           result=true;
         }
       }
-      break
+      break;
   }
-  return result
+  return result;
 }
