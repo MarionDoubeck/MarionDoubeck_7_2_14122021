@@ -68,3 +68,7 @@ function recipe_has_tag(recipe,tag){
   }
   return result;
 }
+////////////////////////////////////////////////////////////////////////////////////
+function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}

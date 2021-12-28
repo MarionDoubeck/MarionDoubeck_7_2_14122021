@@ -195,7 +195,3 @@ function open_modal(e,recipies){
     document.getElementById('chosen_recipe').classList.add("hidden");
   })
 }
-////////////////////////////////////////////////////////////////////////////////////
-function capitalizeFirstLetter(string) {
-  return string.charAt(0).toUpperCase() + string.slice(1);
-}
